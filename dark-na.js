@@ -67,25 +67,73 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
         chalk.green(groupName)
       );
     }
+const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+ if(time2 < "23:59:00"){
+var ucapanWaktu = `Good Night ðŸŒŒ`
+ }
+ if(time2 < "19:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "18:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "15:00:00"){
+var ucapanWaktu = `Good Afternoon ðŸŒ…`
+ }
+ if(time2 < "11:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ }
+ if(time2 < "05:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ } 
 
     if (isCmd2) {
       switch (command) {
         case "help":
         case "menu":
-          m.reply(`*Whatsapp Bot OpenAI*
-            
-*(ChatGPT)*
-Cmd: ${prefix}ai 
-Tanyakan apa saja kepada AI. 
+          m.reply(`*DARK NA BOT MENU LIST*
+ _______________
+┃
+┃ 🕐Time: ${xtime}
+┃ 👁️‍Date: ${xdate}
+┃_______________
 
-*(DALL-E)*
-Cmd: ${prefix}img
-Membuat gambar dari teks
+╔ ⫷search cmd⫸
+╠🔮Cmd: ${prefix}ai 
+╠🔮Cmd: ${prefix}ai-img
+╠🔮Cmd: ${prefix}git
+╠🔮cmd:.img
+╚🔮cmd:.sticker
 
-*(Source Code Bot)*
-Cmd: ${prefix}sc
-Menampilkan source code bot yang dipakai`)
+created by Nilambara`)
           break;
+          case 'sticker': case 's': case 'stickergif': case 'sgif': {
+            if (!quoted) throw `*Reply Video/Image With Caption* ${prefix + command}`
+            m.reply(mess.wait)
+                    if (/image/.test(mime)) {
+                let media = await quoted.download()
+                let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(encmedia)
+            } else if (/video/.test(mime)) {
+                if ((quoted.msg || quoted).seconds > 11) return m.reply('*Maximum 10 seconds!*')
+                let media = await quoted.download()
+                let encmedia = await XeonBotInc.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(encmedia)
+            } else {
+                throw `*Send Image/Video With Caption* ${prefix + command}\nDuration *Video 1-9 Seconds*`
+                }
+            }
+            break
+            case 'imag': {
+                m.reply(mess.wait)
+    let { pinterest } = require('./lib/scraperW')
+                anuxeonezy2 = await pinterest(text)
+                resultkkk3 = anuxeonezy2[Math.floor(Math.random() * anuxeonezy2.length)]
+                XeonBotInc.sendMessage(m.chat, { image: { url: resultkkk3 }, caption: ` ${themeemoji} Media Url : `+resultkkk3 }, { quoted: m })
+            }
+            break
         case "ai": case "openai": 
           try {
             if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
@@ -121,7 +169,7 @@ Menampilkan source code bot yang dipakai`)
           }
         }
           break;
-        case "img": case "ai-img": case "image": case "images":
+         case "ai-img": case "image": case "images":
           try {
             if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
             if (!text) return reply(`Membuat gambar dari AI.\n\nContoh:\n${prefix}${command} Wooden house on snow mountain`);
@@ -147,8 +195,8 @@ Menampilkan source code bot yang dipakai`)
           }
         }
           break;
-          case "sc": case "script": case "scbot":
-           m.reply("Bot ini menggunakan script dari https://github.com/Sansekai/Wa-OpenAI");
+          case "git": case "script": case "scbot":
+           m.reply("HI\n\nBot Developer:Nilambara\n\nBot Develop Team:DARK-NA TEAM\n\nBot Git Link");
           break
         default: {
           if (isCmd2 && budy.toLowerCase() != undefined) {

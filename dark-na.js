@@ -70,7 +70,7 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
 
 
     if (isCmd2) {
-      //switch (command) {
+      switch (command) {
         case "help":
         case "menu":
           m.reply(`*DARK NA BOT MENU LIST*

@@ -67,27 +67,7 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
         chalk.green(groupName)
       );
     }
-const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
- if(time2 < "23:59:00"){
-var ucapanWaktu = `Good Night ðŸŒŒ`
- }
- if(time2 < "19:00:00"){
-var ucapanWaktu = `Good Evening ðŸŒƒ`
- }
- if(time2 < "18:00:00"){
-var ucapanWaktu = `Good Evening ðŸŒƒ`
- }
- if(time2 < "15:00:00"){
-var ucapanWaktu = `Good Afternoon ðŸŒ…`
- }
- if(time2 < "11:00:00"){
-var ucapanWaktu = `Good Morning ðŸŒ„`
- }
- if(time2 < "05:00:00"){
-var ucapanWaktu = `Good Morning ðŸŒ„`
- } 
+
 
     if (isCmd2) {
       switch (command) {
@@ -96,8 +76,8 @@ var ucapanWaktu = `Good Morning ðŸŒ„`
           m.reply(`*DARK NA BOT MENU LIST*
  _______________
 ┃
-┃ 🕐Time: ${xtime}
-┃ 👁️‍Date: ${xdate}
+┃ 🕐Time: 
+┃ 👁️‍Date:
 ┃_______________
 
 ╔ ⫷search cmd⫸

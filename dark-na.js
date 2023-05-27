@@ -90,7 +90,7 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
 created by Nilambara`)
           break;
           case 'sticker': case 's': case 'stickergif': case 'sgif': {
-            if (!quoted) throw `*Reply Video/Image With Caption* ${prefix + command}`
+            if (!quoted) throw `*Reply Video/Image With Caption*`
             m.reply(mess.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
@@ -102,7 +102,7 @@ created by Nilambara`)
                 let encmedia = await XeonBotInc.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
-                throw `*Send Image/Video With Caption* ${prefix + command}\nDuration *Video 1-9 Seconds*`
+                throw `*Send Image/Video With Caption* .sticker \nDuration *Video 1-9 Seconds*`
                 }
             }
             break

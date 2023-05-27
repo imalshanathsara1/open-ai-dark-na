@@ -278,13 +278,140 @@ async function startHisoka() {
         startHisoka();
       }
     } else if (connection === "open") {
-      console.log(color("Bot success conneted to server", "green"));
+      console.log(color("Bot success conneted", "green"));
       console.log(color("Donate for creator https://saweria.co/sansekai", "yellow"));
-      console.log(color("Type /menu to see menu"));
-      client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot started!\n\njangan lupa support ya bang :)\n${donet}` });
+      console.log(color("Type .menu to see menu"));
+      client.sendMessage(owner + "@s.whatsapp.net", { text: `Bot started!\n\nDARK-NA AI WHATSAPP BOT\n${donet}` });
     }
     // console.log('Connected...', update)
   });
+
+
+function pickRandom(list) {
+return list[Math.floor(list.length * Math.random())]
+}
+//document randomizer
+let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
+let docs = pickRandom(documents)
+
+    XeonBotInc.ev.on('group-participants.update', async (anu) => {
+        console.log(anu)
+        try {
+            let metadata = await XeonBotInc.groupMetadata(anu.id)
+            let participants = anu.participants
+            for (let num of participants) {
+                // Get Profile Picture User
+                try {
+                    ppuser = await XeonBotInc.profilePictureUrl(num, 'image')
+                } catch {
+                    ppuser = 'https://i.ibb.co/sbqvDMw/avatar-contact-large-v2.png'
+                }
+
+                // Get Profile Picture Group
+                try {
+                    ppgroup = await zass.profilePictureUrl(anu.id, 'image')
+                } catch {
+                    ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png'
+                }
+                
+                //welcome\\
+        let nama = await XeonBotInc.getName(num)
+memb = metadata.participants.length
+XeonWlcm = await getBuffer(ppuser)
+XeonLft = await getBuffer(ppuser)
+                if (anu.action == 'add') {
+                const xeonbuffer = await getBuffer(ppuser)
+                let xeonName = num
+                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+              const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+              const xmembers = metadata.participants.length
+                let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: XeonWlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                xeonbody = `┌─❖
+│「 🔮𝗛𝗶🔮 」
+└┬❖ 「 @${xeonName.split("@")[0]}  」
+   │✑  𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 
+   │✑  ${metadata.subject}
+   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
+   │✑ ${xmembers}th
+   │✑  𝗝𝗼𝗶𝗻𝗲𝗱 : 
+   │✑ ${xtime} ${xdate}
+   │✑  created by Nilambara
+   │✑  DARK-NA
+   └───────────────┈ ⳹`
+let buttons = [
+{buttonId: `wkwwk`, buttonText: {displayText: 'Welcome 💐'}, type: 1}
+]
+let buttonMessage = {
+document: fs.readFileSync('./media/theme/cheems.xlsx'),
+mimetype: docs,
+jpegThumbnail:XeonWlcm,
+mentions: [num],
+fileName: `${metadata.subject}`,
+fileLength: 99999999999999,
+caption: xeonbody,
+footer: `${botname}`,
+//buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: `${ownername}`,
+body: `Don't forget to read group description`,
+mediaType:2,
+thumbnail: XeonWlcm,
+sourceUrl: `${websitex}`,
+mediaUrl: `${websitex}`
+}}
+}
+XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
+                } else if (anu.action == 'remove') {
+                  const xeonbuffer = await getBuffer(ppuser)
+                    const xeontime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                  const xeondate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                  let xeonName = num
+                    const xeonmembers = metadata.participants.length
+                    let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: xeonbuffer, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+                    xeonbody = `┌─❖
+│「 🔮 𝗚𝗼𝗼𝗱𝗯𝘆𝗲 🔮 」
+└┬❖ 「 @${xeonName.split("@")[0]}  」
+   │✑  𝗟𝗲𝗳𝘁 
+   │✑ ${metadata.subject}
+   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
+   │✑ ${xeonmembers}th
+   │✑  𝗧𝗶𝗺𝗲 : 
+   │✑  ${xeontime} ${xeondate}
+   │✑  created by Nilambara
+   │✑  DARK-NA
+   └───────────────┈ ⳹`
+let buttons = [
+{buttonId: `wkwkwk`, buttonText: {displayText: 'Sayonara 🥀'}, type: 1}
+]
+let buttonMessage = {
+document: fs.readFileSync('./media/theme/cheems.xlsx'),
+mimetype: docs,
+jpegThumbnail:XeonLft,
+mentions: [num],
+fileName: `${metadata.subject}`,
+fileLength: 99999999999999,
+caption: xeonbody,
+footer: `${botname}`,
+//buttons: buttons,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: `${ownername}`,
+body: `Bye! my friend, take care.`,
+mediaType:2,
+thumbnail: XeonLft,
+sourceUrl: `${websitex}`,
+mediaUrl: `${websitex}`
+}}
+}
+XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
+                             
+                }
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    })
 
   client.ev.on("creds.update", saveCreds);
 

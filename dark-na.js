@@ -113,26 +113,11 @@ var ucapanWaktu = `Good Morning ðŸŒ„`
  if(time2 < "05:00:00"){
 var ucapanWaktu = `Good Morning ðŸŒ„`
  } 
-  case 'timen':{
-           m.reply(`🕐time: ${xtime} `);
-            break
-       case 'sticker': case 's': case 'stickergif': case 'sgif': {
-            if (!quoted) throw `*Reply Video/Image With Caption*`
-            m.reply(mess.wait)
-                    if (/image/.test(mime)) {
-                let media = await quoted.download()
-                let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return m.reply('*Maximum 10 seconds!*')
-                let media = await quoted.download()
-                let encmedia = await XeonBotInc.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else {
-                throw `*Send Image/Video With Caption* .sticker\nDuration *Video 1-9 Seconds*`
-                }
-            }
-            break
+
+       // case 'timen':{
+       //     m.reply(`🕐time: ${xtime} `);
+       //      break;
+  
             case 'img': {
                 m.reply(mess.wait)
     let { pinterest } = require('./lib/scraperW')
@@ -203,6 +188,9 @@ var ucapanWaktu = `Good Morning ðŸŒ„`
           }
         }
           break;
+          case 'timen':{
+           m.reply(`🕐time: ${xtime} `);
+            break;
           case "git": case "script": case "scbot":
            m.reply("HI\n\nBot Developer:Nilambara\n\nBot Develop Team:DARK-NA TEAM\n\nBot Git Link");
           break

@@ -7,6 +7,28 @@ let setting = require("./key.json");
 const moment = require('moment-timezone');
 const { JSDOM } = require('jsdom');
 
+const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+ if(time2 < "23:59:00"){
+var ucapanWaktu = `Good Night ðŸŒŒ`
+ }
+ if(time2 < "19:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "18:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "15:00:00"){
+var ucapanWaktu = `Good Afternoon ðŸŒ…`
+ }
+ if(time2 < "11:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ }
+ if(time2 < "05:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ } 
+
 module.exports = sansekai = async (client, m, chatUpdate, store) => {
   try {
     var body =
@@ -77,9 +99,10 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
         case "menu":
           m.reply(`*DARK NA BOT MENU LIST*
  _______________
-┃
-┃ 🕐Time: 
-┃ 👁️‍Date: 
+┃  
+┃ HI ${time2}
+┃ 🕐Time: ${xtime}
+┃ 👁️‍Date: ${xdate}
 ┃_______________
 
 ╔ ⫷search cmd⫸
@@ -92,27 +115,27 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
 
 created by Nilambara`)
           break;
-const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
- if(time2 < "23:59:00"){
-var ucapanWaktu = `Good Night ðŸŒŒ`
- }
- if(time2 < "19:00:00"){
-var ucapanWaktu = `Good Evening ðŸŒƒ`
- }
- if(time2 < "18:00:00"){
-var ucapanWaktu = `Good Evening ðŸŒƒ`
- }
- if(time2 < "15:00:00"){
-var ucapanWaktu = `Good Afternoon ðŸŒ…`
- }
- if(time2 < "11:00:00"){
-var ucapanWaktu = `Good Morning ðŸŒ„`
- }
- if(time2 < "05:00:00"){
-var ucapanWaktu = `Good Morning ðŸŒ„`
- } 
+// const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+// const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+// const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+//  if(time2 < "23:59:00"){
+// var ucapanWaktu = `Good Night ðŸŒŒ`
+//  }
+//  if(time2 < "19:00:00"){
+// var ucapanWaktu = `Good Evening ðŸŒƒ`
+//  }
+//  if(time2 < "18:00:00"){
+// var ucapanWaktu = `Good Evening ðŸŒƒ`
+//  }
+//  if(time2 < "15:00:00"){
+// var ucapanWaktu = `Good Afternoon ðŸŒ…`
+//  }
+//  if(time2 < "11:00:00"){
+// var ucapanWaktu = `Good Morning ðŸŒ„`
+//  }
+//  if(time2 < "05:00:00"){
+// var ucapanWaktu = `Good Morning ðŸŒ„`
+//  } 
 
        // case 'timen':{
        //     m.reply(`🕐time: ${xtime} `);
@@ -188,9 +211,9 @@ var ucapanWaktu = `Good Morning ðŸŒ„`
           }
         }
           break;
-          case 'timen':{
-           m.reply(`🕐time: ${xtime} `);
-            break;
+           // case 'timen':{
+           // m.reply(`🕐time: ${xtime}`);
+           //  break
           case "git": case "script": case "scbot":
            m.reply("HI\n\nBot Developer:Nilambara\n\nBot Develop Team:DARK-NA TEAM\n\nBot Git Link");
           break

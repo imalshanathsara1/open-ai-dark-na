@@ -4,6 +4,7 @@ const util = require("util");
 const chalk = require("chalk");
 const { Configuration, OpenAIApi } = require("openai");
 let setting = require("./key.json");
+const moment = require('moment-timezone')
 
 module.exports = sansekai = async (client, m, chatUpdate, store) => {
   try {
@@ -68,6 +69,27 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
       );
     }
 
+const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+ if(time2 < "23:59:00"){
+var ucapanWaktu = `Good Night ðŸŒŒ`
+ }
+ if(time2 < "19:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "18:00:00"){
+var ucapanWaktu = `Good Evening ðŸŒƒ`
+ }
+ if(time2 < "15:00:00"){
+var ucapanWaktu = `Good Afternoon ðŸŒ…`
+ }
+ if(time2 < "11:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ }
+ if(time2 < "05:00:00"){
+var ucapanWaktu = `Good Morning ðŸŒ„`
+ } 
 
     if (isCmd2) {
       switch (command) {
@@ -76,8 +98,8 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
           m.reply(`*DARK NA BOT MENU LIST*
  _______________
 ┃
-┃ 🕐Time: 
-┃ 👁️‍Date:
+┃ 🕐Time: ${xtime}
+┃ 👁️‍Date: ${xdate}
 ┃_______________
 
 ╔ ⫷search cmd⫸
@@ -89,7 +111,7 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
 
 created by Nilambara`)
           break;
-          case 'sticker': case 's': case 'stickergif': case 'sgif': {
+       case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `*Reply Video/Image With Caption*`
             m.reply(mess.wait)
                     if (/image/.test(mime)) {
@@ -102,11 +124,11 @@ created by Nilambara`)
                 let encmedia = await XeonBotInc.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
-                throw `*Send Image/Video With Caption* .sticker \nDuration *Video 1-9 Seconds*`
+                throw `*Send Image/Video With Caption* .sticker\nDuration *Video 1-9 Seconds*`
                 }
             }
             break
-            case 'imag': {
+            case 'img': {
                 m.reply(mess.wait)
     let { pinterest } = require('./lib/scraperW')
                 anuxeonezy2 = await pinterest(text)
@@ -149,6 +171,7 @@ created by Nilambara`)
           }
         }
           break;
+
          case "ai-img": case "image": case "images":
           try {
             if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");

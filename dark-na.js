@@ -4,7 +4,8 @@ const util = require("util");
 const chalk = require("chalk");
 const { Configuration, OpenAIApi } = require("openai");
 let setting = require("./key.json");
-const moment = require('moment-timezone')
+const moment = require('moment-timezone');
+const { JSDOM } = require('jsdom');
 
 module.exports = sansekai = async (client, m, chatUpdate, store) => {
   try {
@@ -69,6 +70,28 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
       );
     }
 
+
+    if (isCmd2) {
+      switch (command) {
+        case "help":
+        case "menu":
+          m.reply(`*DARK NA BOT MENU LIST*
+ _______________
+┃
+┃ 🕐Time: 
+┃ 👁️‍Date: 
+┃_______________
+
+╔ ⫷search cmd⫸
+╠🔮Cmd: ${prefix}ai 
+╠🔮Cmd: ${prefix}ai-img
+╠🔮Cmd: ${prefix}git
+╠🔮cmd:.img
+╚🔮cmd:.sticker
+╚🔮cmd:.timen
+
+created by Nilambara`)
+          break;
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
@@ -90,27 +113,9 @@ var ucapanWaktu = `Good Morning ðŸŒ„`
  if(time2 < "05:00:00"){
 var ucapanWaktu = `Good Morning ðŸŒ„`
  } 
-
-    if (isCmd2) {
-      switch (command) {
-        case "help":
-        case "menu":
-          m.reply(`*DARK NA BOT MENU LIST*
- _______________
-┃
-┃ 🕐Time: ${xtime}
-┃ 👁️‍Date: ${xdate}
-┃_______________
-
-╔ ⫷search cmd⫸
-╠🔮Cmd: ${prefix}ai 
-╠🔮Cmd: ${prefix}ai-img
-╠🔮Cmd: ${prefix}git
-╠🔮cmd:.img
-╚🔮cmd:.sticker
-
-created by Nilambara`)
-          break;
+  case 'timen':{
+           m.reply(`🕐time: ${xtime} `);
+            break
        case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `*Reply Video/Image With Caption*`
             m.reply(mess.wait)

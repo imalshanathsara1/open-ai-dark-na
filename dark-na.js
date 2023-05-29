@@ -6,6 +6,8 @@ const { Configuration, OpenAIApi } = require("openai");
 let setting = require("./key.json");
 const moment = require('moment-timezone');
 const { JSDOM } = require('jsdom');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
@@ -61,6 +63,8 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
     let text = (q = args.join(" "));
     const arg = budy.trim().substring(budy.indexOf(" ") + 1);
     const arg1 = arg.trim().substring(arg.indexOf(" ") + 1);
+    const quoted = m.quoted ? m.quoted : m
+    const mime = (quoted.msg || quoted).mimetype || ''
 
     const from = m.chat;
     const reply = m.reply;
@@ -100,7 +104,7 @@ module.exports = sansekai = async (client, m, chatUpdate, store) => {
           m.reply(`*DARK NA BOT MENU LIST*
  _______________
 ┃  
-┃ HI ${time2}
+┃ 
 ┃ 🕐Time: ${xtime}
 ┃ 👁️‍Date: ${xdate}
 ┃_______________

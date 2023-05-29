@@ -39,6 +39,7 @@
     "moment-timezone": "^0.5.34",
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.12",
+    "youtube-yts": "^2.0.0",
     "jsdom": "^16.4.0"
   },
   "directories": {

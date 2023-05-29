@@ -8,6 +8,7 @@ const moment = require('moment-timezone');
 const { JSDOM } = require('jsdom');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const yts = require('youtube-yts')
 
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
@@ -140,10 +141,40 @@ created by Nilambara`)
 //  if(time2 < "05:00:00"){
 // var ucapanWaktu = `Good Morning ðŸŒ„`
 //  } 
+//google img dowun
+// case 'gimage': {
+//        if (!text) throw `Example : ${prefix + command} kaori cicak`
+//         xeonezyanu = await fetchJson(`https://api.akuari.my.id/search/googleimage?query=${text}`)
+//         n = xeonezyanu.result
+//         images = n[Math.floor(Math.random() * n.length)]
+//         //let buttons = [
+//                     //{buttonId: `gimage ${text}`, buttonText: {displayText: 'Next Image'}, type: 1}
+//                 //]
+//                 let buttonMessage = {
+//                     image: { url: images },
+//                     caption: `*-------ã€Œ GIMAGE SEARCH ã€-------*
+// ${themeemoji} *Query* : ${text}
+// ${themeemoji} *Media Url* : ${images}`,
+//                     footer: botname,
+//                     //buttons: buttons,
+//                     headerType: 4
+//                 }
+//                 XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m })
+//         }
+//         break
+          case 'yts': case 'ytsearch': {
+                if (!text) throw `Example : ${prefix + command} story wa anime`
+                let yts = require("youtube-yts")
+                let search = await yts(text)
+                let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
+                let no = 1
+                for (let i of search.all) {
+                    teks += `${themeemoji} No : ${no++}\n${themeemoji} Type : ${i.type}\n${themeemoji} Video ID : ${i.videoId}\n${themeemoji} Title : ${i.title}\n${themeemoji} Views : ${i.views}\n${themeemoji} Duration : ${i.timestamp}\n${themeemoji} Uploaded : ${i.ago}\n${themeemoji} Url : ${i.url}\n\nâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€\n\n`
+                }
+                XeonBotInc.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
+            }
+            break
 
-       // case 'timen':{
-       //     m.reply(`🕐time: ${xtime} `);
-       //      break;
   
             case 'img': {
                 m.reply(mess.wait)

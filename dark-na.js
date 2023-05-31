@@ -4,10 +4,10 @@ const util = require("util");
 const chalk = require("chalk");
 const { Configuration, OpenAIApi } = require("openai");
 let setting = require("./key.json");
-const moment = require('moment-timezone');
-const { JSDOM } = require('jsdom');
-const axios = require('axios');
-const cheerio = require('cheerio');
+const moment = require('moment-timezone')
+const { JSDOM } = require('jsdom')
+const axios = require('axios')
+const cheerio = require('cheerio')
 const yts = require('youtube-yts')
 
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')

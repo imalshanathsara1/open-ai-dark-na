@@ -139,7 +139,7 @@ created by Nilambara`)
 // var ucapanWaktu = `Good Morning ðŸŒ„`
 //  }
 //  if(time2 < "05:00:00"){
-// var ucapanWaktu = `Good Morning ðŸŒ„`
+// var ucapanWaktu = `Good Morning ðŸŒ„`c
 //  } 
 //google img dowun
 // case 'gimage': {
